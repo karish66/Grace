@@ -3,9 +3,20 @@
 /**
  * Module dependencies.
  */
+/*
+     Database config
+ */
+var dbConfig = require('../config/db.config');
+var db = new dbConfig(process.env.DB_URL);
+db.connectDb((isError, error)=>{
+  if(isError){
+    throw error;
+  }
+});
 
 var app = require('../app');
-var debug = require('debug')('grace:server');
+var debug = require('debug')('food:server');
+var socketIo = require('../controllers/socket.controller');
 var http = require('http');
 
 /**
@@ -20,6 +31,12 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+
+/*
+    Config Socket.Io
+ */
+
+socketIo.config(server);
 
 /**
  * Listen on provided port, on all network interfaces.
