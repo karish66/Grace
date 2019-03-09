@@ -18,7 +18,6 @@ class  signUp {
                 req.otp = otplib.authenticator.generate(email_hash);
                 console.log(req.otp);
             }catch(error){
-                console.log(error);
                 res.json({
                     error : {
                         status : true,
@@ -64,7 +63,6 @@ class  signUp {
         return (req, res, next)=>{
             const otp = req.body.otp;
             const email = req.body.email;
-            console.log(req.body);
             OTP.verifyOTP(email,otp, (error, isValid)=>{
                 if(error){
                     res.json({

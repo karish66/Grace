@@ -9,6 +9,7 @@ class Auth{
         return (req, res, next)=> {
             try {
                 const token = req.headers.authorization;
+                console.log(req.headers.authorization);
                 jwt.verify(token, process.env.JWT_SECRET, (error, data) => {
                     if (error) {
                         res.json({
@@ -66,9 +67,12 @@ class Auth{
                                 status : false
                             },
                             resData :  {
-                                isMatched : true,
-                                token : req.cookies.Auth,
-                                message : 'user is already logedin'
+                                userData:{
+                                  isMatched : true,
+                                  token : req.cookies.Auth,
+                                  message : 'user is already logedin'
+                                }
+
                             }
                         });
                     }
@@ -86,8 +90,10 @@ class Auth{
               status: false
             },
             resData:{
-              isMatched : false,
-              message : 'user not logged in'
+              userData: {
+                isMatched : false,
+                message : 'user not logged in'
+              }
             }
           });
         };
@@ -95,7 +101,8 @@ class Auth{
     login(){
         return (req, res, next) => {
             try{
-              const email = req.body.email;
+              console.log(typeof(req.body));
+              const email = req.body.email.toLowerCase();
               const password = req.body.password;
               if(typeof(password) !== 'string'|| typeof(email) !== 'string')
                 res.json({
@@ -104,9 +111,9 @@ class Auth{
                     message : 'email or password not defined'
                   }
                 })
-              console.log(password);
               USER.getPasswordByEmail(email, (error, data)=>{
                   if(error){
+                    console.log("here");
                       res.json({
                           error : {
                               status : true,
@@ -115,7 +122,7 @@ class Auth{
                       });
                   }
                   else{
-                      console.log(password, data);
+                      console.log(data);
                       const isMatched = bcrypt.compareSync(password, data.password);
                       if(isMatched){
                           const token = jwt.sign({
@@ -127,21 +134,22 @@ class Auth{
                               }
                           }, process.env.JWT_SECRET);
                           res.cookie('Auth', token);
-                          console.log(token);
                           res.json({
                               error : {
                                   status : false
                               },
                               resData : {
-                                  isMatched : isMatched,
-                                  email : email,
-                                  accountType : data.accountType,
-                                  profile : data.profile,
-                                  firstName : data.firstName,
-                                  lastName : data.lastName,
-                                  accountStatus : data.accountStatus,
-                                  token : token,
-                                  message : 'Successfully logged in...'
+                                  userData:{
+                                    isMatched : isMatched,
+                                    email : email,
+                                    accountType : data.accountType,
+                                    profile : data.profile,
+                                    firstName : data.firstName,
+                                    lastName : data.lastName,
+                                    accountStatus : data.accountStatus,
+                                    token : token,
+                                    message : 'Successfully logged in...'
+                                  }
                               }
                           });
                       }

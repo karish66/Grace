@@ -20,7 +20,6 @@ class mailer{
             };
             this.transporter.sendMail(mailOptions, function(error){
                 if (error) {
-                    console.log(error);
                     res.json({
                         error : {
                             status : true,
