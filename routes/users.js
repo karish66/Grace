@@ -1,6 +1,4 @@
 const express = require('express');
-const upload = multer(multerConfig);
-const multer  = require('multer');
 
 
 const SignUp = require('../controllers/signup.controller');
