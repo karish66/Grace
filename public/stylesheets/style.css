@@ -1,8 +1,219 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* Custom CSS */
+*{
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  font-family: sans-serif;
+  box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
+
+/*Navigation bar*/
+/*logo*/
+#first-letter{
+	font-size: 40px;
+}
+#logo{
+	font-size: 30px;
+	color: crimson;
+}
+/*menu*/
+#unordered-list li a{
+	color: crimson;
+}
+#unordered-list li.active a{
+  border: 1px solid crimson;
+}
+#unordered-list li a:hover{
+  border: 1px solid crimson;
+}
+
+
+/* Carosel*/
+/*making image responsive */
+ .carousel-inner img {
+    width: 100%;
+    height: 100vh;
+  }
+.carousel-caption h1{
+	color: crimson;
+	font-size: 50px;
+}
+.carousel-caption p{
+	font-size: 18px;
+}
+.carousel-caption{
+   margin-bottom: 10%;
+}
+.btn{
+	margin: 8% 2% 0 0;
+	width: 25%;
+	height: 10%;
+}
+
+
+/*Join us */
+.join-us{
+	margin: 7%;
+}
+.section-features{
+	background-color: #e6e6e6;
+	margin-bottom: 5%;
+}
+.feature-color{
+	padding: 5% 5%;
+}
+.target h5{
+	margin-top: 3.5%;
+}
+.target p{
+	color: dimgray;
+}
+
+
+
+/*How it work*/
+.work p{
+	text-align: left;
+}
+.work-div h2{
+	padding-bottom: 2%;
+}
+.flowchart{
+	margin-top: 3.5%;
+}
+
+/*How to install*/
+.install{
+	margin: 3% 0;
+}
+.install h2{
+	padding-bottom: 2%;
+}
+.part2{
+	padding-left: 2%;
+}
+.part1{
+}
+.part1 img{
+	height: 60%;
+	width: 100%;
+	margin-top: 9%;
+}
+
+.works-step{
+    margin-bottom: 2%;
+}
+.works-step p{
+    text-align: left;
+}
+.works-step:last-of-type {
+    margin-bottom: 80px;
+}
+.works-step div{
+    color: #990000;
+    border: 2px solid #990000;
+    border-radius: 50%;
+    display: inline-block;
+    height: 50px;
+    width: 55px;
+    text-align: center;
+    padding: 5px;
+    float: left;
+    font-size: 150%;
+    margin-right: 25px;
+}
+
+.btn-app img{
+    height: 50px;
+    width: auto;
+}
+
+/* Our gallery code */
+#gp{
+    font-size: 40px;
+    font-family: 'Autour One';
+    text-align: center;
+     }
+ #gh{
+     width:10%;
+     margin:0px auto;
+     margin-bottom: 15px;
+     border-color: gray;
+ }
+#gallery{
+     padding-top:85px;
+     padding-bottom: 40px;
+}
+#gallery img{
+       margin:0px auto;
+       border: 5px solid black;
+       border-bottom: 20px solid black;
+       margin: 5px;
+       display: inline-block;
+       height: 200px;
+       width: 200px;
+}
+
+
+
+/*About Team*/
+.numbers {
+  color: black;
+}
+.numc {
+  /* background: white; */
+  height: 130px;
+  width: 150px;
+  /* padding-top: 50px; */
+  border-radius: 50%;
+
+}
+.numd {
+  /* padding-top: 4%;
+  padding-bottom: 4%; */
+  font-size: 25px;
+}
+hr{
+            width:20%;
+            margin:0px auto;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border-color: white;
+        }
+.OT {
+  padding-top: 20px;
+}
+
+
+/*Parallax*/
+.parallax {
+    min-height: 300px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/*Footer*/
+.custom-footer{
+  padding-bottom: 40px;
+  padding-top: 30px;
+  color:gray;
+}
+#line1{
+  font-size: 40px;
+  font-family: 'Barlow';
+  color:crimson;
+}
+#lin2 a{
+  color: crimson;
+}
+#icon{
+  font-size:30px;
+  color: crimson;
+}
+#gmail{
+	color: crimson;
 }
