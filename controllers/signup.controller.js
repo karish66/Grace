@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const otplib = require('otplib');
 const jwt = require('jsonwebtoken');
 const salt = bcrypt.genSaltSync(10);
-const OTP = require('../models/opt.model');
+const OTP = require('../models/otp.model');
 
 
 class  signUp {

@@ -3,6 +3,7 @@ const express = require('express');
 
 const SignUp = require('../controllers/signup.controller');
 const Auth = require('../controllers/auth.controller');
+const Mailer = require('../controllers/mail.controller');
 
 
 const router = express.Router();
@@ -10,13 +11,13 @@ const router = express.Router();
 
 router.post('/sign-up',
     Auth.validateSession(),
-    signUp.hashPassword(),
-    signUp.addUser());
+    SignUp.hashPassword(),
+    SignUp.addUser());
 
 router.post('/verify/send-otp',
-    signUp.generateOPT(),
-    signUp.saveOTP(),
-    mailer.sendOTP());
+    SignUp.generateOPT(),
+    SignUp.saveOTP(),
+    Mailer.sendOTP());
 
 router.post('/verify/validate-otp', SignUp.verifyOTP());
 

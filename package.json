@@ -24,6 +24,5 @@
     "socket.io": "^2.2.0",
     "speakeasy": "^2.0.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
