@@ -97,6 +97,7 @@ class USERS{
                 cb(error);
             }
             else{
+                console.log(data);
                 cb(null,{
                     password : data.password,
                     accountType : data.accountType,
