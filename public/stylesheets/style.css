@@ -2,7 +2,6 @@
 html {
   scroll-behavior: smooth;
 }
-
 *{
   margin: 0px;
   padding: 0px;
@@ -10,6 +9,8 @@ html {
   font-family: sans-serif;
   box-sizing: border-box;
 }
+
+
 /*Navigation bar*/
 /*logo*/
 #first-letter{
@@ -29,6 +30,7 @@ html {
 #unordered-list li a:hover{
   border: 1px solid crimson;
 }
+
 
 
 /* Carosel*/
@@ -54,7 +56,8 @@ html {
 }
 
 
-/*Join us */
+
+/*Why join us */
 .join-us{
 	margin: 7%;
 }
@@ -74,62 +77,21 @@ html {
 
 
 
-/*How it work*/
+/*How we work*/
 .work p{
-	text-align: left;
+    margin-top: 4%;
+	font-size: 15px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 17px;
 }
 .work-div h2{
 	padding-bottom: 2%;
 }
-.flowchart{
-	margin-top: 3.5%;
+#earth{
+    height: 500px;
+    width: 500px;
 }
 
-/*How to install*/
-.install{
-	margin: 3% 0;
-}
-.install h2{
-	padding-bottom: 2%;
-}
-.part2{
-	padding-left: 2%;
-}
-.part1{
-}
-.part1 img{
-	height: 60%;
-	width: 100%;
-	margin-top: 9%;
-}
-
-.works-step{
-    margin-bottom: 2%;
-}
-.works-step p{
-    text-align: left;
-}
-.works-step:last-of-type {
-    margin-bottom: 80px;
-}
-.works-step div{
-    color: #990000;
-    border: 2px solid #990000;
-    border-radius: 50%;
-    display: inline-block;
-    height: 50px;
-    width: 55px;
-    text-align: center;
-    padding: 5px;
-    float: left;
-    font-size: 150%;
-    margin-right: 25px;
-}
-
-.btn-app img{
-    height: 50px;
-    width: auto;
-}
 
 /* Our gallery code */
 #gp{
@@ -144,7 +106,7 @@ html {
      border-color: gray;
  }
 #gallery{
-     padding-top:85px;
+     padding-top: 3%;
      padding-bottom: 40px;
 }
 #gallery img{
@@ -159,33 +121,82 @@ html {
 
 
 
+/*Our Concern*/
+.install{
+	margin: 3% 0;
+}
+.install h2{
+	padding-bottom: 2%;
+}
+.part2{
+	padding-left: 2%;
+}
+.part1 img{
+	height: 60%;
+	width: 100%;
+	margin-top: 9%;
+}
+.works-step{
+    margin-bottom: 2%;
+}
+.works-step p{
+    text-align: left;
+    font-weight: bold;
+    margin-top: 2%;
+}
+.works-step:last-of-type {
+    margin-bottom: 40px;
+}
+.works-step div{
+    color: #990000;
+    border: 2px solid #990000;
+    border-radius: 50%;
+    display: inline-block;
+    height: 50px;
+    width: 55px;
+/*    text-align: center;*/
+    padding: 5px;
+    float: left;
+    font-size: 150%;
+    margin-right: 25px;
+}
+.btn-app img{
+    height: 50px;
+    width: auto;
+}
+.line{
+    margin-right: 20%;
+}
+
+
+
+
+
 /*About Team*/
 .numbers {
   color: black;
 }
 .numc {
-  /* background: white; */
   height: 130px;
   width: 150px;
-  /* padding-top: 50px; */
   border-radius: 50%;
-
+      margin: 2px;
 }
 .numd {
-  /* padding-top: 4%;
-  padding-bottom: 4%; */
   font-size: 25px;
 }
 hr{
-            width:20%;
-            margin:0px auto;
-            margin-top: 15px;
-            margin-bottom: 15px;
-            border-color: white;
-        }
+   width:20%;
+   margin:0px auto;
+   margin-top: 15px;
+   margin-bottom: 15px;
+   border-color: white;
+}
+/*
 .OT {
   padding-top: 20px;
 }
+*/
 
 
 /*Parallax*/
