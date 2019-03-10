@@ -40,6 +40,7 @@ class OTP{
     verifyOTP(email, otp, cb){
         this.model.findOne({email:email, otp:otp})
             .then(data=>{
+                console.log(data);
                 if(data.otp === otp)
                     cb(null, true);
                 else

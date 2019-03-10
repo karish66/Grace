@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 class REQUEST {
     constructor(){
+        // >>>>>>>>>>>>>>>>
         const Schema = mongoose.Schema({
             email : {
                 type : String,
@@ -18,22 +19,10 @@ class REQUEST {
             description : {
                 type : String
             },
-            // loc:{
-            //   type : Array,
-            //   required : true
-            // },
             location: {
              type: { type: String },
              coordinates: []
            },
-            // lat : {
-            //     type : Number,
-            //     required : true
-            // },
-            // long : {
-            //     type : Number,
-            //     required : true
-            // },
             status : {
                 type : Number,
                 required : true,
@@ -42,8 +31,16 @@ class REQUEST {
             date : {
               type: Date,
               default : new Date()
+            },
+            emailA:{
+              type : String,
+              default : ""
+            },
+            otp:{
+              type:String
             }
         });
+        // <<<<<<<<<<<<<<<<
         Schema.index({ location: "2dsphere" });
         this.model = mongoose.model('Request', Schema);
     }
@@ -66,8 +63,8 @@ class REQUEST {
                 cb(error);
             });
     }
-    updateRequestStatus(id, status, cb){
-        this.model.updateOne({_id:id},{status:status})
+    updateRequestStatus(id, updateData, cb){
+        this.model.updateOne({_id:id},updateData)
             .then(()=>{
                 cb(null, true);
             })
@@ -105,6 +102,22 @@ class REQUEST {
             });
       }
     }
+
+    // >>>>>>>>>>>>>>>>>>
+
+    getActiveRequest(email, cb){
+      this.model.find({emailA:email, status : 2})
+          .then(data=>cb(null, data))
+          .catch(error=>cb(error));
+    }
+
+    getRequestDetail(id, cb){
+      this.model.findById(id)
+          .then(data=>cb(null, data))
+          .catch(error=>cb(error));
+    }
+
+    // <<<<<<<<<<<<<<<<<<
 }
 
 module.exports = new REQUEST();

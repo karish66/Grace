@@ -129,7 +129,7 @@ class Auth{
                               tokenType : 'Auth',
                               userData : {
                                   email : email,
-                                  accountType : 'DO' || data.accountType,
+                                  accountType : data.accountType,
                                   isAdmin : false
                               }
                           }, process.env.JWT_SECRET);

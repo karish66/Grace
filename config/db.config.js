@@ -5,6 +5,7 @@ class dbConfig{
         this.dbURL = dbURL;
     }
     connectDb(cb){
+        mongoose.Promise = require('bluebird').Promise;
         mongoose.connect(this.dbURL,{useNewUrlParser:true})
             .then(()=>{
                 console.log('Db is connected successfully....');

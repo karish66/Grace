@@ -12,7 +12,7 @@ class Timer {
                     }
                     else{
                         if(status === 0){
-                            REQUEST.updateRequestStatus(id,3,(error, isUpdate)=>{
+                            REQUEST.updateRequestStatus(id,{status:3},(error, isUpdate)=>{
                                 if(error){
                                     throw error;
                                 }

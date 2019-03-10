@@ -64,6 +64,7 @@ class Request {
     requestBroadcast(reqType){
         return (req, res, next)=>{
             const reqId = req.body.id;
+            const email = req.body.email;
             socket.requestBroadcast(reqType,req.body);
             next();
         };
@@ -98,6 +99,87 @@ class Request {
         })
       };
     }
+
+    // >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+    getAcceptedRequest(){
+      return (req, res, next)=>{
+        const email = req.body.email;
+        REQUEST.getAcceptedRequest(email, (error, data)=>{
+          if(error)
+            res.json({
+              error : {
+                ststus : true,
+                message : error.message
+              }
+            });
+          else
+            res.json({
+              error : {
+                status : false
+              },
+              resData : data
+            });
+        });
+      };
+    }
+
+    getRequestDetailById(){
+      return (req, res, next)=>{
+        const id = req.body.id;
+        REQUEST.getRequestDetail(id, (error, data)=>{
+          if(error)
+            res.json({
+              error:{
+                status : true,
+                message : error.message
+              }
+            });
+          else{
+            req.body.requestData = data;
+            next();
+          }
+        });
+      };
+    }
+
+    accceptRequest(){
+      return (req, res, next)=>{
+        const email = req.body.email;
+        const id = req.body.id;
+        const otp = req.otp;
+        REQUEST.updateRequestStatus(id, {status:2, emailA:email,otp:otp}, (error, isUpdated)=>{
+          if(error) res.json({error:{ststus:true,message:error.message}});
+          else next();
+        });
+      }
+
+    }
+
+    verifyOtp(){
+      return (req, res, next)=>{
+        const id = req.body.id;
+        const otp = req.body.otp;
+        const origialOpt = req.body.requestData.otp;
+        if(otp === origialOpt){
+          REQUEST.updateRequestStatus(id,{status:4},(error, isUpdated)=>{
+            if(error) req.json({error:{status:true, message: error.message}});
+            else next();
+          });
+        }
+        else{
+          res.json({
+            error:{
+              status : true,
+              message : 'otp is not matched'
+            }
+          });
+        }
+      };
+    }
+
+    // <<<<<<<<<<<<<<<<<<<<<<<<
 }
 
 module.exports = new Request();

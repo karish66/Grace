@@ -86,7 +86,11 @@ class User{
 
   }
   getAcceptorDetails(email, limit, cb){
-    cb(null,{});
+    cb(null,{
+      userData:{
+        accountType:'AC'
+      }
+    });
     // REQUEST.getAcceptorDetails(email,limit, (error, data)=>{
     //   cb(error, data);
     // });

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 class USERS{
     constructor(){
-        this.Schema = mongoose.Schema({
+        const Schema = mongoose.Schema({
             firstName : {
                 type: String,
                 required: true
@@ -62,13 +62,9 @@ class USERS{
                 required : true,
                 default : false
             },
-            lat : {
-                type: Number,
-                required : true
-            },
-            long : {
-                type : Number,
-                required : true
+            location: {
+                type: { type: String },
+                coordinates: []
             },
             range : {
               type : Number,
@@ -79,7 +75,8 @@ class USERS{
               defalut : 1000
             }
         });
-        this.model = mongoose.model('USERS',this.Schema);
+        Schema.index({ location: "2dsphere" });
+        this.model = mongoose.model('USERS',Schema);
     }
     addUser(userData, cb){
         let newUser = new this.model(userData);
@@ -92,12 +89,13 @@ class USERS{
             });
     }
     getPasswordByEmail(email, cb){
+      console.log(email);
         this.model.findOne({email:email}, (error, data)=>{
             if(error){
                 cb(error);
             }
             else{
-                console.log(data);
+              console.log(data);
                 cb(null,{
                     password : data.password,
                     accountType : data.accountType,
@@ -123,7 +121,26 @@ class USERS{
                 cb(error);
             });
     }
-    getUserRange(email, cb){}
+    getUserRange(email, cb){
+        this.model.findOne({email:email})
+            .then((data)=>{
+                cb(null, {maxRange : data.maxRange});
+            })
+            .catch(error=>{
+                cb(error);
+            });
+    }
+    getUserInRange(loc, maxRange, email, cb){
+      this.model.find({location:
+        {$near: {
+            $maxDistance: maxRange,
+            $geometry: { type: "Point", coordinates: loc}
+          }
+        },
+        email : {$ne:email}
+      }).then(data=>cb(null, Array.from(data,x=>x.location)))
+        .catch(error=>cb(error));
+    }
 }
 
 module.exports  = { USER : new USERS() };
